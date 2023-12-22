@@ -1,0 +1,30 @@
+name: Install nginx
+
+on:
+  # push:
+  #   branches:
+  #    - master
+  workflow_dispatch:
+    inputs:
+        required: true
+
+jobs:
+  install-nginx:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v2
+      
+    - name: Set up Python
+      uses: actions/setup-python@v2
+      with:
+        python-version: 3.x
+
+    - name: Install Ansible
+      run: |
+        sudo apt update
+        sudo apt install python3-pip
+        sudo apt install ansible
+        ansible --version
+
