@@ -6,7 +6,7 @@ on:
   #    - master
   workflow_dispatch:
     inputs:
-        Run:
+      Run:
         description: 'Wanna run'
         required: true
 
@@ -38,4 +38,3 @@ jobs:
 
     - name: Run Playbook
       run: ansible-playbook -i inventory.ini nginx.yaml
-
