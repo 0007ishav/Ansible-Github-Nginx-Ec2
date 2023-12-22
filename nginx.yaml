@@ -1,6 +1,6 @@
 ---
 - name: Install Nginx
-  hosts: all
+  hosts: manage-node
   become: true
   tasks:
     - name: Update package cache
