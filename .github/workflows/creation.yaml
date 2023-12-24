@@ -34,9 +34,4 @@ jobs:
           sudo apt install ansible
 
       - name: Run Ansible Playbook
-        uses: dawidd6/action-ansible-playbook@v2
-        with:
-          playbook: nginx.yml
-        env:
-          ANSIBLE_HOST_KEY_CHECKING: false
-          SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
+        run: ansible-playbook -i inventory.ini nginx.yaml
