@@ -33,15 +33,13 @@ jobs:
         run: |
           mkdir -p /home/runner/.ssh/
           echo "${{ secrets.SSH_PRIVATE_KEY }}" > /home/runner/.ssh/id_rsa
-          chmod 600 /home/runner/.ssh/id_rsa
-          sudo cp /home/runner/.ssh/id_rsa /etc/ansible/hosts
-          sudo chown root:root /etc/ansible/hosts
-          sudo chmod 600 /etc/ansible/hosts
+          chmod 400 /home/runner/.ssh/id_rsa
+          cp /home/runner/.ssh/id_rsa ~/.ssh/id_rsa
         shell: bash
 
-
       - name: Display SSH Key
-        run: cat /etc/ansible/hosts
+        run: cat ~/.ssh/id_rsa
+
 
       - name: Run Ansible Playbook
         run: |
