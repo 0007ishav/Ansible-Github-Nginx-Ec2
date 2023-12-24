@@ -50,6 +50,6 @@ jobs:
         with:
           playbook: creationnginx.yaml
           directory: ./
-          inventory: inventory.ini  # Update to your actual inventory file path
+          inventory: ./inventory.ini  # Update to your actual inventory file path
           options: --user=ubuntu  # Specify the SSH user
           key: ${{ secrets.SSH_PRIVATE_KEY }}
