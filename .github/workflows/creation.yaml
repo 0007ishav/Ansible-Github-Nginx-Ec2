@@ -34,7 +34,6 @@ jobs:
           mkdir -p /home/runner/.ssh/
           echo "${{ secrets.SSH_PRIVATE_KEY }}" > /home/runner/.ssh/id_rsa
           chmod 400 /home/runner/.ssh/id_rsa
-          cp /home/runner/.ssh/id_rsa ~/.ssh/id_rsa
         shell: bash
 
       - name: Display SSH Key
@@ -44,8 +43,11 @@ jobs:
       - name: Run Ansible Playbook
         run: |
           ansible-playbook -i /etc/ansible/hosts -e "ansible_ssh_private_key_file=/etc/ansible/hosts" -u ubuntu -b creationnginx.yaml
-        env:
-          AWS_REGION: ap-south-1  # Replace with your AWS region
-          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
-          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-
+        
+          
+      - name: Run Ansible Playbook
+        uses: dawidd6/action-ansible-playbook@v2
+        with:
+          playbook: creationnginx.yaml
+          directory: ./
+          key: ${{ secrets.SSH_PRIVATE_KEY }}
