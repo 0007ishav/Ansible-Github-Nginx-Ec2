@@ -40,9 +40,9 @@ jobs:
         run: cat ~/.ssh/id_rsa
 
 
-      - name: Run Ansible Playbook
-        run: |
-          ansible-playbook -i /etc/ansible/hosts -e "ansible_ssh_private_key_file=/etc/ansible/hosts" -u ubuntu -b creationnginx.yaml
+      # - name: Run Ansible Playbook
+      #   run: |
+      #     ansible-playbook -i /etc/ansible/hosts -e "ansible_ssh_private_key_file=/etc/ansible/hosts" -u ubuntu -b creationnginx.yaml
         
           
       - name: Run Ansible Playbook
@@ -50,4 +50,6 @@ jobs:
         with:
           playbook: creationnginx.yaml
           directory: ./
+          inventory: inventory.ini  # Update to your actual inventory file path
+          user: ubuntu  # Specify the SSH user
           key: ${{ secrets.SSH_PRIVATE_KEY }}
