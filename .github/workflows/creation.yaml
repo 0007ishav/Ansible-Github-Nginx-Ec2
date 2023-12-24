@@ -39,6 +39,11 @@ jobs:
       - name: Display SSH Key
         run: cat ~/.ssh/id_rsa
 
+      - name: Clear Known Hosts File
+        run: rm -f ~/.ssh/known_hosts
+
+      - name: Add EC2 Host Key
+        run: ssh-keyscan -H -t rsa 13.232.245.205 >> ~/.ssh/known_hosts
 
       - name: Run Ansible Playbook
         run: |
