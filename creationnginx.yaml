@@ -1,9 +1,10 @@
 ---
 - name: Install Nginx
   hosts: manage-node
-  become: true
+  become: yes
+
   tasks:
-    - name: Update package cache
+    - name: Update apt cache
       apt:
         update_cache: yes
 
@@ -11,3 +12,4 @@
       apt:
         name: nginx
         state: present
+        update_cache: yes
