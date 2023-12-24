@@ -36,6 +36,15 @@ jobs:
           sudo apt install python3-pip
           sudo apt install ansible
 
-      - name: Run Ansible Playbook
-        run: ansible-playbook -i inventory.ini creationnginx.yaml
-
+      - name: Run playbook
+        uses: dawidd6/action-ansible-playbook@v2
+        with:
+          # Required, playbook filepath
+          playbook: creationnginx.yaml
+    # Optional, directory where playbooks live
+          directory: ./
+    # Optional, SSH private key
+          key: ${{secrets.SSH_PRIVATE_KEY}}
+    # Optional, literal inventory file contents
+          inventory: |
+            --inventory.ini
