@@ -22,9 +22,6 @@ jobs:
         chmod 700 /home/runner/.ssh/id_rsa
         chmod 600 /home/runner/.ssh/id_rsa  # Set correct permissions
 
-    - name: Remove host from known_hosts
-      run: ssh-keygen -R manage-node
-
     - name: Set up Python
       uses: actions/setup-python@v2
       with:
@@ -42,3 +39,4 @@ jobs:
 
     - name: Run Playbook
       run: ansible-playbook -i inventory.ini nginx.yaml
+
