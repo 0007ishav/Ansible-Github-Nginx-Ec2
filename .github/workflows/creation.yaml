@@ -37,17 +37,17 @@ jobs:
       # - name: Clear Known Hosts File
       #   run: rm -f ~/.ssh/known_hosts
         
-      # - name: Set up SSH Key
-      #   run: |
-      #     mkdir -p /home/runner/.ssh/
-      #     echo "${{ secrets.SSH_PRIVATE_KEY }}" > /home/runner/.ssh/id_rsa
-      #     chmod 400 /home/runner/.ssh/id_rsa
-      #   shell: bash
+      - name: Set up SSH Key
+        run: |
+          mkdir -p /home/runner/.ssh/
+          echo "${{ secrets.SSH_PRIVATE_KEY }}" > /home/runner/.ssh/id_rsa
+          chmod 400 /home/runner/.ssh/id_rsa
+        shell: bash
 
-      # - name: Listing ssh
-      #   run: |
-      #       cd /home/runner
-      #       ls -a
+      - name: Listing ssh
+        run: |
+            cd /home/runner
+            ls -a .ssh
         
       # - name: Display SSH Key
       #   run: cat ~/.ssh/id_rsa
