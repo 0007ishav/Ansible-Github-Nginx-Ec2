@@ -32,19 +32,19 @@ jobs:
       - name: Clear Known Hosts File
         run: rm -f ~/.ssh/known_hosts
         
-      - name: Set up SSH Key
-        run: |
-          mkdir -p /home/runner/.ssh/
-          echo "${{ secrets.SSH_PRIVATE_KEY }}" > /home/runner/.ssh/id_rsa
-          chmod 400 /home/runner/.ssh/id_rsa
-        shell: bash
+      # - name: Set up SSH Key
+      #   run: |
+      #     mkdir -p /home/runner/.ssh/
+      #     echo "${{ secrets.SSH_PRIVATE_KEY }}" > /home/runner/.ssh/id_rsa
+      #     chmod 400 /home/runner/.ssh/id_rsa
+      #   shell: bash
 
       - name: Display SSH Key
         run: cat ~/.ssh/id_rsa
 
 
       - name: Add EC2 Host Key
-        run: ssh-keyscan -H -t rsa 13.232.245.205 >> ~/.ssh/known_hosts
+        run: ssh-keyscan -H -t rsa 13.234.18.4 >> ~/.ssh/known_hosts
   
       - name: Display SSH Key and Known Hosts
         run: |
@@ -52,8 +52,7 @@ jobs:
           cat ~/.ssh/known_hosts
 
       - name: Run Ansible Playbook
-        run: |
-          ansible-playbook -i inventory.ini --private-key=/home/runner/.ssh/id_rsa -u ubuntu -b creationnginx.yaml
+        run: ansible-playbook -i inventory.ini --private-key=/home/runner/.ssh/id_rsa -u ubuntu -b creationnginx.yaml
 
     #      ansible-playbook -i /etc/ansible/hosts -e "ansible_ssh_private_key_file=/etc/ansible/hosts" -u ubuntu -b creationnginx.yaml
         
