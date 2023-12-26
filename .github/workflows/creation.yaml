@@ -15,13 +15,13 @@ jobs:
       - name: Checkout Repository
         uses: actions/checkout@v2
 
-      - name: Set up Python
-        uses: actions/setup-python@v2
-        with:
-          python-version: 3.x
+      # - name: Set up Python
+      #   uses: actions/setup-python@v2
+      #   with:
+      #     python-version: 3.x
 
-      - name: Install pip
-        run: python -m ensurepip --default-pip
+      # - name: Install pip
+      #   run: python -m ensurepip --default-pip
 
       - name: Install Ansible
         run: |
@@ -49,8 +49,8 @@ jobs:
             cd /home/runner
             ls -a .ssh
         
-      # - name: Display SSH Key
-      #   run: cat ~/.ssh/id_rsa
+      - name: Display SSH Key
+        run: cat ~/.ssh/id_rsa
 
 
       # - name: Add EC2 Host Key
@@ -62,7 +62,9 @@ jobs:
       #     cat ~/.ssh/known_hosts
 
       # - name: Run Ansible Playbook
-      #   run: ansible-playbook -i inventory.ini --private-key=/home/runner/.ssh/id_rsa -u ubuntu -b creationnginx.yaml
+      #   run: ansible-playbook -i inventory.ini creationnginx.yaml
+            
+        # ansible-playbook -i inventory.ini --private-key=/home/runner/.ssh/id_rsa -u ubuntu -b creationnginx.yaml
 
     #      ansible-playbook -i /etc/ansible/hosts -e "ansible_ssh_private_key_file=/etc/ansible/hosts" -u ubuntu -b creationnginx.yaml
         
