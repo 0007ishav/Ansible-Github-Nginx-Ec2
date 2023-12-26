@@ -63,15 +63,15 @@ jobs:
       #   shell: bash
       - name: Set up SSH Key
         run: |
-          
           echo "${{ secrets.SSH_PRIVATE_KEY }}" > ~/key.pem
           chmod 400 ~/key.pem
         shell: bash
 
       - name: Listing ssh
-        run: |
-            cd /home/runner
-            ls -a .ssh
+        run: ls
+              
+            # cd /home/runner
+            # ls -a .ssh
         
       - name: Display SSH Key
         run: cat ~/.ssh/id_rsa
