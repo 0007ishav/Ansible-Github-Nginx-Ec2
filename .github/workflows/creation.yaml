@@ -80,7 +80,10 @@ jobs:
       #     cat ~/.ssh/known_hosts
 
       - name: Run Ansible Playbook
-        run: ansible-playbook -i inventory.ini creationnginx.yaml
+        run: ansible-all -i inventory.ini -m ping
+        
+      # - name: Run Ansible Playbook
+      #   run: ansible-playbook -i inventory.ini creationnginx.yaml
             
         # ansible-playbook -i inventory.ini --private-key=/home/runner/.ssh/id_rsa -u ubuntu -b creationnginx.yaml
 
