@@ -34,6 +34,7 @@ jobs:
         run: |
           sudo apt update
           sudo apt install python3-pip
+          sudo apt install ansible
           
       - name: Ansible Version
         run: ansible --version
@@ -78,8 +79,8 @@ jobs:
       #     cat ~/.ssh/id_rsa
       #     cat ~/.ssh/known_hosts
 
-      # - name: Run Ansible Playbook
-      #   run: ansible-playbook -i inventory.ini creationnginx.yaml
+      - name: Run Ansible Playbook
+        run: ansible-playbook -i inventory.ini creationnginx.yaml
             
         # ansible-playbook -i inventory.ini --private-key=/home/runner/.ssh/id_rsa -u ubuntu -b creationnginx.yaml
 
