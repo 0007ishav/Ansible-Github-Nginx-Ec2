@@ -43,7 +43,9 @@ jobs:
         shell: bash
 
       - name: Listing ssh
-        run: ls
+        run: |
+            cd /home/runner
+            ls -a
         
       # - name: Display SSH Key
       #   run: cat ~/.ssh/id_rsa
