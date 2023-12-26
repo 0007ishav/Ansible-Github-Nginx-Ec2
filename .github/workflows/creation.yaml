@@ -27,14 +27,15 @@ jobs:
       - name: Python Version
         run: python --version
         
+      - name: Python Version
+        run: pip --version
+        
       - name: Install Ansible
         run: |
           sudo apt update
           sudo apt install -y python3-pip
           sudo pip3 install ansible
 
-      - name: Python Version
-        run: python --version
       
       - name: Listing ssh
         run: |
